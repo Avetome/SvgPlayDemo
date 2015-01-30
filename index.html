@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        
+        <!--<link rel="stylesheet/less" href="./content/less/bootstrap/bootstrap.less">
+        <link rel="stylesheet/less" href="./content/less/index.less">-->
+        <link rel="stylesheet" href="./content/bootstrap.css">
+        <link rel="stylesheet" href="./content/index.css">
+        
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/less-1.7.0.min.js"></script>        
+        <script src="./js/jquery.svghelpers.js"></script>
+        <script src="./js/ToothSvgControl.js"></script>
+
+        <script>
+            var toothControlList = [];
+            jQuery(window).ready(function(){
+                var tooth23 = new ToothSvgControl("Tooth23");
+                var tooth33 = new ToothSvgControl("Tooth33");
+                var tooth34 = new ToothSvgControl("Tooth34");
+                var tooth35 = new ToothSvgControl("Tooth35");
+                toothControlList.push(tooth23);
+                toothControlList.push(tooth33);
+                toothControlList.push(tooth34);
+                toothControlList.push(tooth35);
+
+                jQuery(".js-instrument").click(function(){
+                    if(jQuery(this).is(":checked")){
+                        for(var i = 0; i < toothControlList.length; i++){
+                            toothControlList[i].setInstrument(jQuery(this).val());
+                        }
+
+                        jQuery(".js-instrument").parents(".js-instrument-wrapper").removeClass("active");
+                        jQuery(this).parents(".js-instrument-wrapper").addClass("active");
+                    }
+                });
+            });
+        </script>
+    </head>     
+    <body>        
+        <div class="container">
+            <header class="header">
+                <h1>Svg demo</h1>
+                <p>
+                    We try to simulate <a href="https://www.odesk.com/leaving-odesk?ref=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DUMMjWbcuI_8">this</a>
+                    periodontal chart with SVG. For first time I added simplest instruments.
+                </p>
+            </header>        
+            <div class="jumbotron">
+                <div class="row instrument-panel">
+                    <p>Choose the instrument: </p>
+                    <div class="radio-inline instrument js-instrument-wrapper caries active">
+                      <label>
+                        <input type="radio" class="js-instrument" name="optionsRadios" id="CariesInstrument" value="caries" checked autocomplete="off">
+                        Caries
+                      </label>
+                    </div>
+                    <div class="radio-inline instrument js-instrument-wrapper resina">
+                      <label>
+                        <input type="radio" class="js-instrument" name="optionsRadios" id="ResinaInstrument" value="resina"  autocomplete="off">
+                        Resina
+                      </label>
+                    </div>
+                    <div class="radio-inline instrument js-instrument-wrapper amalgalma">
+                      <label>
+                        <input type="radio" class="js-instrument" name="optionsRadios" id="AmalgalmaInstrument" value="amalgalma"  autocomplete="off">
+                        Amalgalma
+                      </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 tooth">
+                        23
+                        <object data="content/img/dental.svg" type="image/svg+xml" id="Tooth23" width="100%" height="100%"></object>
+                    </div>
+                    <div class="col-md-3 tooth">
+                        33
+                        <object data="content/img/dental.svg" type="image/svg+xml" id="Tooth33" width="100%" height="100%"></object>
+                    </div>
+                    <div class="col-md-3 tooth">
+                        34
+                        <object data="content/img/dental.svg" type="image/svg+xml" id="Tooth34" width="100%" height="100%"></object>
+                    </div>
+                    <div class="col-md-3 tooth">
+                        35
+                        <object data="content/img/dental.svg" type="image/svg+xml" id="Tooth35" width="100%" height="100%"></object>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <a href="mailto:avetome@gmail.com">avetome@gmail.com</a>
+            </footer>            
+        </div>
+    </body>
+</html>
